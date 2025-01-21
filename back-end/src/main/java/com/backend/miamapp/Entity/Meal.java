@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Duration;
+import java.util.List;
 
 @Entity
 @Data
@@ -39,4 +40,7 @@ public class Meal {
     @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.REMOVE)
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
+
+    @ManyToMany(mappedBy = "meals")
+    private List<Order> orders;
 }
