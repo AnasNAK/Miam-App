@@ -7,5 +7,9 @@
 :root {
     --primary : #E56338;
     --secondary : #2D2928;
-    
+}
+
+body{
+    background-color: #FAF9F6;
+
 }
