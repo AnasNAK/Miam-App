@@ -26,7 +26,6 @@ public class CreateMealDTO {
     private double price;
     @NotNull
     private int quantity;
-    @NotEmpty
     private MealCategory category;
     @NotNull
     private Long restaurant_id;

@@ -24,5 +24,5 @@ public class CreateOrderDTO {
     @NotEmpty
     private OrderStatus status = OrderStatus.PENDING;
     @NotEmpty
-    private List<Long> mealIds;
+    private List<MealsOrds> MealsOrdsList;
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Meals")
+@Table(name = "meal")
 public class Meal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,6 +44,6 @@ public class Meal {
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-    @ManyToMany(mappedBy = "meals")
-    private List<Order> orders;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE , mappedBy = "meal")
+    private List<Order_Meal> orderMeals;
 }

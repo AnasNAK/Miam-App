@@ -1,5 +1,7 @@
 package com.backend.miamapp.Service.Impl;
 import com.backend.miamapp.DTO.Meal.UpdateQuantity;
+import com.backend.miamapp.Entity.Restaurant;
+import com.backend.miamapp.Repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.backend.miamapp.Repository.MealRepository;
 import com.backend.miamapp.DTO.Meal.CreateMealDTO;
@@ -24,13 +26,20 @@ public class MealServiceImpl implements MealService {
     private MealRepository mealRepository;
 
     @Autowired
+    private RestaurantRepository restaurantRepository;
+
+    @Autowired
     private MealMapper mealMapper;
 
     @Override
     public ResponseMealDTO createMeal(CreateMealDTO createMealDTO) {
+        Restaurant restaurant = restaurantRepository.findById(createMealDTO.getRestaurant_id())
+                .orElseThrow(() -> new EntityNotFoundException("Restaurant not found"));
+
         Meal entity = mealMapper.toEntity(createMealDTO);
+        entity.setRestaurant(restaurant);
         Meal meal = mealRepository.save(entity);
-        return mealMapper.toResponse(entity);
+        return mealMapper.toResponse(meal);
     }
 
     @Override

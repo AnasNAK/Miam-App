@@ -1,5 +1,6 @@
 package com.backend.miamapp.Entity.Enum;
 
+
 public enum MealCategory {
     APPETIZER,  // Small dishes typically served before the main course
     MAIN_COURSE, // The main dish or course of the meal

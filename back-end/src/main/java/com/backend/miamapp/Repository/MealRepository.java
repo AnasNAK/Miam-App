@@ -10,8 +10,7 @@ import java.util.List;
 public interface MealRepository extends JpaRepository<Meal,Long> {
 
     @Query("SELECT m FROM Meal m " +
-            "JOIN m.orders co " +
-            "JOIN co.meals om " +
+            "JOIN m.orderMeals om " +
             "GROUP BY m " +
             "ORDER BY COUNT(om) DESC")
     List<Meal> findTop3MostOrderedMeals();

@@ -1,6 +1,7 @@
 package com.backend.miamapp.DTO.Meal;
 
 import com.backend.miamapp.DTO.Order.OrderEmbeded;
+import com.backend.miamapp.DTO.Restaurant.RestaurantEmbeded;
 import com.backend.miamapp.Entity.Enum.MealCategory;
 import com.backend.miamapp.Entity.Restaurant;
 import jakarta.validation.constraints.NotEmpty;
@@ -24,6 +25,6 @@ public class ResponseMealDTO {
     private double price;
     private int quantity;
     private MealCategory category;
-    private Restaurant restaurant;
+    private RestaurantEmbeded restaurant;
     private List<OrderEmbeded> orders;
 }
