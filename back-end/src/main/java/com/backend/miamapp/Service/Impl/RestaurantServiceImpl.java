@@ -28,7 +28,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     public ResponseRestaurantDTO createRestaurant(CreateRestaurantDTO createRestaurantDTO) {
         Restaurant entity = restaurantMapper.toEntity(createRestaurantDTO);
         Restaurant restaurant = restaurantRepository.save(entity);
-        return restaurantMapper.toResponse(entity);
+        return restaurantMapper.toResponse(restaurant);
     }
 
     @Override

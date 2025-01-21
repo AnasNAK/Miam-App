@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "order")
+@Table(name = "client_order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +33,7 @@ public class Order {
     @ManyToMany
     @JoinTable(
             name = "order_meal",
-            joinColumns = @JoinColumn(name = "order_id"),
+            joinColumns = @JoinColumn(name = "client_order_id"),
             inverseJoinColumns = @JoinColumn(name = "meal_id")
     )
     private List<Meal> meals;
