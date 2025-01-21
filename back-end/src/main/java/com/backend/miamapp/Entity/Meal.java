@@ -37,6 +37,9 @@ public class Meal {
     @Enumerated(EnumType.STRING)
     private MealCategory category;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.REMOVE)
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;

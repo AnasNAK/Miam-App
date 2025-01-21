@@ -1,4 +1,5 @@
 package com.backend.miamapp.Service.Impl;
+import com.backend.miamapp.DTO.Meal.UpdateQuantity;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.backend.miamapp.Repository.MealRepository;
 import com.backend.miamapp.DTO.Meal.CreateMealDTO;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -67,4 +69,22 @@ public class MealServiceImpl implements MealService {
     public ResponseMealDTO updateMeal(CreateMealDTO createMealDTO , Long id) {
         return null;
     }
+
+
+
+    @Override
+    public List<ResponseMealDTO> getTop3OrdredMeals() {
+        List<Meal> Top3Meals  = mealRepository.findTop3MostOrderedMeals();
+        return Top3Meals.stream().map(mealMapper::toResponse).toList();
+    }
+
+    @Override
+    public ResponseMealDTO updateQuantity(UpdateQuantity updateQuantity) {
+        Meal meal = mealRepository.findById(updateQuantity.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Meal not found with id: " + updateQuantity.getId()));
+        meal.setQuantity(updateQuantity.getQuantity());
+        mealRepository.save(meal);
+        return mealMapper.toResponse(meal);
+    }
+
 }

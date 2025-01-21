@@ -19,6 +19,7 @@ public class ResponseMealDTO {
     private Long id;
     private String name;
     private String description;
+    private String imageUrl;
     private Duration preparationTime;
     private double price;
     private int quantity;

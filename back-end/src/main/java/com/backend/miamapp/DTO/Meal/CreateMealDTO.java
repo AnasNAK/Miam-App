@@ -18,6 +18,8 @@ public class CreateMealDTO {
     private String name;
     @NotEmpty
     private String description;
+    @NotEmpty
+    private String imageUrl;
     @NotNull
     private Duration preparationTime;
     @NotNull

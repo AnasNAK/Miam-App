@@ -11,6 +11,8 @@ import com.backend.miamapp.DTO.Restaurant.ResponseRestaurantDTO;
 import com.backend.miamapp.DTO.Restaurant.CreateRestaurantDTO;
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/restaurant")
 public class RestaurantController {
@@ -48,6 +50,15 @@ public class RestaurantController {
     public ResponseEntity<ResponseRestaurantDTO> updateRestaurant(@RequestBody CreateRestaurantDTO createRestaurantDTO , @PathVariable("restaurantId") Long id){
         ResponseRestaurantDTO response = restaurantService.updateRestaurant(createRestaurantDTO , id);
         return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @GetMapping("/search/{restaurantName}")
+    public ResponseEntity<List<ResponseRestaurantDTO>> getRestaurantByName(@PathVariable("restaurantName") String name){
+        List<ResponseRestaurantDTO> responseRestaurantDTO = restaurantService.searchRestaurantByName(name );
+        if(responseRestaurantDTO == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(responseRestaurantDTO);
     }
 
 }
