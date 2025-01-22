@@ -6,3 +6,7 @@ export const selectPaymentMethod = createSelector(
     selectOrderState , 
     (state : flexibleOrder) => state.paymentMethod
 )
+export const selectFullPrice = createSelector(
+    selectOrderState,
+    (state:flexibleOrder) => state.total_command_price
+)
