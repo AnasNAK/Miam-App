@@ -1,1 +1,11 @@
-<p class="text-primary">order-page works!</p>
+<div class="bg-white p-4 rounded-xl shadow-xl w-[85vw] h-[90vh] absolute left-2/4 top-2/4 translate-x-[-50%] translate-y-[-50%] m-auto">
+    <div class="w-2/5 h-full flex flex-col">
+        <h2 class="font-bold italic roboto text-3xl">Orders</h2>
+        @if(OrderData == null){
+            <p>No data available</p>
+        }@else {
+            <p class="text-sm text-gray-400">{{formatDate(OrderData.date_of_command)}}</p>
+        }
+        <app-meal-holder-order-page></app-meal-holder-order-page>
+    </div>
+</div>
