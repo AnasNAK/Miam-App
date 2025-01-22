@@ -1,12 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MealHolderOrderPageComponent } from "./components/meal-holder-order-page/meal-holder-order-page.component";
+import { Observable } from 'rxjs';
+import { flexibleOrder, Order } from './Models/order.module';
+import { Store } from '@ngrx/store';
+import { CalculateFullPrice, LoadOrder } from './service/order.actions';
 
 
 const orderData = {
-  date_of_command: "2025-01-22T15:30:00",
+  orderDate: new Date("2025-01-22T15:30:00"),
+  paymentMethod: null,
+  status: null,
   meals: [
     {
+      id: 1,
       name: "Caesar Salad",
       description: "Fresh romaine lettuce, croutons, and parmesan cheese",
       quantity: 2,
@@ -15,6 +22,7 @@ const orderData = {
       imageUrl: "https://res.cloudinary.com/dtzhtlss7/image/upload/v1737544108/CaesarSalad_inbize.jpg"
     },
     {
+      id: 2,
       name: "Tomato Soup",
       description: "Rich and creamy tomato soup with fresh basil",
       quantity: 1,
@@ -23,6 +31,7 @@ const orderData = {
       imageUrl: "https://res.cloudinary.com/dtzhtlss7/image/upload/v1737542962/TomatoSoup_zfrsml.jpg"
     },
     {
+      id: 3,
       name: "Grilled Chicken Sandwich",
       description: "Juicy grilled chicken with lettuce and tomato",
       quantity: 3,
@@ -31,8 +40,7 @@ const orderData = {
       imageUrl: "https://res.cloudinary.com/dtzhtlss7/image/upload/v1737543171/GrilledChickenSandwich_nin73g.jpg"
     }
   ],
-  total_command_price: 82.47
-}
+};
 
 
 @Component({
@@ -44,23 +52,36 @@ const orderData = {
 
 export class OrderPageComponent implements OnInit {
 
-  OrderData :any;
+  OrderData$:Observable<flexibleOrder | null>;
 
-  // ngOnInit(): void {
-  //   localStorage.setItem("order" , JSON.stringify(orderData));
-  // }
-
-  ngOnInit(): void {
-    const storedOrderDataString = localStorage.getItem("order");
-    if(storedOrderDataString) {
-      this.OrderData = JSON.parse(storedOrderDataString);
-    }else{
-      this.OrderData = null;
-    }
+  constructor(private store:Store<{order:flexibleOrder |null}>){
+    this.OrderData$ = this.store.select('order');
   }
 
+  ngOnInit(): void {
+    this.store.dispatch(LoadOrder());
+    this.store.dispatch(CalculateFullPrice());
+    this.OrderData$.subscribe((data) => {
+      console.log('Order Data:', data);
+    });
+  }
 
-  formatDate(isoDate: string): string  {
+  // ngOnInit(): void {
+  //   localStorage.setItem('order' , JSON.stringify(orderData));
+  // }
+
+  // ngOnInit(): void {
+  //   const storedOrderDataString = localStorage.getItem("order");
+  //   if(storedOrderDataString) {
+  //     this.OrderData = JSON.parse(storedOrderDataString);
+  //   }else{
+  //     this.OrderData = null;
+  //   }
+  // }
+
+
+
+  formatDate(isoDate: Date): string  {
     const date = new Date(isoDate);
     
     const day = date.getDate();

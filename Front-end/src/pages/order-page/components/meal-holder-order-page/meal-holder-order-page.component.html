@@ -1,3 +1,5 @@
-<div class="w-full h-full">
-    
+<div class="w-full h-full flex flex-col p-1 gap-3">
+    @for (meal of meals; track meal.id) {
+        <app-meal-order-item [meal]="meal"></app-meal-order-item> 
+    }
 </div>

@@ -1,11 +1,19 @@
-<div class="bg-white p-4 rounded-xl shadow-xl w-[85vw] h-[90vh] absolute left-2/4 top-2/4 translate-x-[-50%] translate-y-[-50%] m-auto">
-    <div class="w-2/5 h-full flex flex-col">
-        <h2 class="font-bold italic roboto text-3xl">Orders</h2>
-        @if(OrderData == null){
-            <p>No data available</p>
-        }@else {
-            <p class="text-sm text-gray-400">{{formatDate(OrderData.date_of_command)}}</p>
-        }
-        <app-meal-holder-order-page></app-meal-holder-order-page>
+<div
+  class="bg-white p-4 rounded-xl shadow-xl w-[85vw] h-[90vh] absolute left-2/4 top-2/4 translate-x-[-50%] translate-y-[-50%] m-auto"
+>
+  <div class="w-2/5 h-full flex flex-col gap-4">
+    <div>
+      <h2 class="font-bold italic roboto text-3xl">Orders</h2>
+     <p *ngIf="OrderData$ | async as orderData">{{ formatDate(orderData.orderDate) }}</p>
     </div>
+    <ng-container *ngIf="OrderData$ | async as orderData; else noData">
+      <app-meal-holder-order-page [meals]="orderData.meals"></app-meal-holder-order-page>
+      <div class="border-t pt-2">
+        <h4 class="text-xl roboto flex justify-between font-bold">Total : <span>${{orderData.total_command_price}}</span> </h4>
+      </div>
+    </ng-container>
+    <ng-template #noData>
+      <p>No data available</p>
+    </ng-template>
+  </div>
 </div>
