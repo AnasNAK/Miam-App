@@ -4,7 +4,9 @@ import { MealHolderOrderPageComponent } from "./components/meal-holder-order-pag
 import { Observable } from 'rxjs';
 import { flexibleOrder, Order } from './Models/order.module';
 import { Store } from '@ngrx/store';
-import { CalculateFullPrice, LoadOrder } from './service/order.actions';
+import { CalculateFullPrice, CalculateTimeToPrepare, LoadOrder } from './service/order.actions';
+import { MealSecondholderComponent } from "./components/meal-secondholder/meal-secondholder.component";
+import { PaymentAndInfoHolderComponent } from "./components/payment-and-info-holder/payment-and-info-holder.component";
 
 
 const orderData = {
@@ -18,7 +20,7 @@ const orderData = {
       description: "Fresh romaine lettuce, croutons, and parmesan cheese",
       quantity: 2,
       price_per_unit: 12.99,
-      preparationTime: "PT30M",
+      preparationTime: 30,
       imageUrl: "https://res.cloudinary.com/dtzhtlss7/image/upload/v1737544108/CaesarSalad_inbize.jpg"
     },
     {
@@ -27,7 +29,7 @@ const orderData = {
       description: "Rich and creamy tomato soup with fresh basil",
       quantity: 1,
       price_per_unit: 9.99,
-      preparationTime: "PT20M",
+      preparationTime: 20,
       imageUrl: "https://res.cloudinary.com/dtzhtlss7/image/upload/v1737542962/TomatoSoup_zfrsml.jpg"
     },
     {
@@ -36,7 +38,7 @@ const orderData = {
       description: "Juicy grilled chicken with lettuce and tomato",
       quantity: 3,
       price_per_unit: 15.50,
-      preparationTime: "PT45M",
+      preparationTime: 45,
       imageUrl: "https://res.cloudinary.com/dtzhtlss7/image/upload/v1737543171/GrilledChickenSandwich_nin73g.jpg"
     }
   ],
@@ -45,7 +47,7 @@ const orderData = {
 
 @Component({
   selector: 'app-order-page',
-  imports: [CommonModule, MealHolderOrderPageComponent],
+  imports: [CommonModule, MealHolderOrderPageComponent, PaymentAndInfoHolderComponent],
   templateUrl: './order-page.component.html',
   styleUrl: './order-page.component.css'
 })
@@ -61,6 +63,7 @@ export class OrderPageComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(LoadOrder());
     this.store.dispatch(CalculateFullPrice());
+    this.store.dispatch(CalculateTimeToPrepare());
     this.OrderData$.subscribe((data) => {
       console.log('Order Data:', data);
     });

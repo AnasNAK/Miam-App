@@ -1,19 +1,26 @@
 <div
-  class="bg-white p-4 rounded-xl shadow-xl w-[85vw] h-[90vh] absolute left-2/4 top-2/4 translate-x-[-50%] translate-y-[-50%] m-auto"
+  class="bg-white p-4 flex gap-10 rounded-xl shadow-xl w-[85vw] h-[90vh] absolute left-2/4 top-2/4 translate-x-[-50%] translate-y-[-50%] m-auto"
 >
-  <div class="w-2/5 h-full flex flex-col gap-4">
-    <div>
-      <h2 class="font-bold italic roboto text-3xl">Orders</h2>
-     <p *ngIf="OrderData$ | async as orderData">{{ formatDate(orderData.orderDate) }}</p>
+  <div class="w-2/5 h-full flex flex-col gap-6 roboto">
+    <div *ngIf="OrderData$ | async as orderData">
+      <h2 class="font-bold italic  text-3xl">Orders</h2>
+     <p class="text-gray-700 ">
+      <span class="text-gray-400">Order date:</span> 
+      {{ formatDate(orderData.orderDate) }}
+      </p>
+      <p class="text-green-400">Estimated preparation time : <span class="font-bold">{{orderData.total_preparation_time}}</span></p>
     </div>
     <ng-container *ngIf="OrderData$ | async as orderData; else noData">
       <app-meal-holder-order-page [meals]="orderData.meals"></app-meal-holder-order-page>
-      <div class="border-t pt-2">
-        <h4 class="text-xl roboto flex justify-between font-bold">Total : <span>${{orderData.total_command_price}}</span> </h4>
-      </div>
+      <!-- <app-meal-secondholder [meals]="orderData.meals"></app-meal-secondholder> -->
     </ng-container>
     <ng-template #noData>
       <p>No data available</p>
     </ng-template>
   </div>
+
+  <app-payment-and-info-holder *ngIf="OrderData$ | async as orderData">
+  </app-payment-and-info-holder>
+
+
 </div>

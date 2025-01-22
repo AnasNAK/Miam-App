@@ -27,6 +27,7 @@ export interface flexibleOrder{
     status:OrderStatus.PENDING,
     meals:meals[],
     total_command_price: number | null;
+    total_preparation_time:string |null;
 }
 
 // to send data to backend you need 
@@ -43,7 +44,7 @@ export interface meals {
     description: string;
     quantity: number;
     price_per_unit: number;
-    preparationTime: string;
+    preparationTime: number;
     imageUrl: string;
 }
 
