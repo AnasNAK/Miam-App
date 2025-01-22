@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -28,7 +29,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     public ResponseRestaurantDTO createRestaurant(CreateRestaurantDTO createRestaurantDTO) {
         Restaurant entity = restaurantMapper.toEntity(createRestaurantDTO);
         Restaurant restaurant = restaurantRepository.save(entity);
-        return restaurantMapper.toResponse(entity);
+        return restaurantMapper.toResponse(restaurant);
     }
 
     @Override
@@ -66,5 +67,11 @@ public class RestaurantServiceImpl implements RestaurantService {
      @Override
     public ResponseRestaurantDTO updateRestaurant(CreateRestaurantDTO createRestaurantDTO , Long id) {
         return null;
+    }
+
+    @Override
+    public List<ResponseRestaurantDTO> searchRestaurantByName(String restaurantName) {
+        List<Restaurant> restaurant = restaurantRepository.findByNameLike(restaurantName + "%");
+        return restaurant.stream().map(restaurantMapper::toResponse).collect(Collectors.toList());
     }
 }

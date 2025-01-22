@@ -13,20 +13,13 @@ import java.time.Duration;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateMealDTO {
-    @NotEmpty
+public class MealForOrders {
+    private Long id;
     private String name;
-    @NotEmpty
     private String description;
-    @NotEmpty
-    private String imageUrl;
-    @NotNull
     private Duration preparationTime;
-    @NotNull
     private double price;
-    @NotNull
     private int quantity;
     private MealCategory category;
-    @NotNull
-    private Long restaurant_id;
+    private Restaurant restaurant;
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "order")
+@Table(name = "commands")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,11 +30,6 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    @ManyToMany
-    @JoinTable(
-            name = "order_meal",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "meal_id")
-    )
-    private List<Meal> meals;
+    @OneToMany(mappedBy = "order" , fetch = FetchType.EAGER , cascade = CascadeType.REMOVE)
+    private List<Order_Meal> Order_Meals;
 }

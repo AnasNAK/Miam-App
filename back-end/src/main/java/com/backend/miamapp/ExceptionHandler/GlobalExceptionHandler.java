@@ -35,12 +35,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorDTO> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
-        List<String> errors = ex.getBindingResult()
-                .getFieldErrors()
+    @ExceptionHandler(HandlerMethodValidationException.class)
+    public ResponseEntity<ErrorDTO> handleHandlerMethodValidationException(HandlerMethodValidationException ex) {
+        List<String> errors = ex.getAllValidationResults()
                 .stream()
-                .map(FieldError::getDefaultMessage)
+                .flatMap(result -> result.getResolvableErrors().stream())
+                .map(error -> error.getDefaultMessage())
                 .collect(Collectors.toList());
 
         String message = String.join(", ", errors);

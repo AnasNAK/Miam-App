@@ -1,4 +1,8 @@
 package com.backend.miamapp.Service.Impl;
+import com.backend.miamapp.Entity.Meal;
+import com.backend.miamapp.Entity.Order_Meal;
+import com.backend.miamapp.Repository.MealRepository;
+import com.backend.miamapp.Repository.Order_MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.backend.miamapp.Repository.OrderRepository;
 import com.backend.miamapp.DTO.Order.CreateOrderDTO;
@@ -23,12 +27,42 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
+    @Autowired
+    private MealRepository mealRepository;
+    @Autowired
+    private Order_MealRepository order_MealRepository;
 
     @Override
     public ResponseOrderDTO createOrder(CreateOrderDTO createOrderDTO) {
         Order entity = orderMapper.toEntity(createOrderDTO);
-        Order order = orderRepository.save(entity);
-        return orderMapper.toResponse(entity);
+        Order savedOrder = orderRepository.save(entity);
+
+        List<Order_Meal> orderMeals = createOrderDTO.getMealsOrdsList().stream()
+                .map(mealOrds -> {
+                    Meal meal = mealRepository.findById(mealOrds.getId())
+                            .orElseThrow(() -> new EntityNotFoundException("Meal not found with ID: " + mealOrds.getId()));
+
+                    if (mealOrds.getQuantity() > meal.getQuantity()) {
+                        throw new IllegalArgumentException("Requested quantity for meal ID "
+                                + meal.getId() + " exceeds available quantity. Available: "
+                                + meal.getQuantity() + ", Requested: " + mealOrds.getQuantity());
+                    }
+
+                    meal.setQuantity(meal.getQuantity() - mealOrds.getQuantity());
+                    mealRepository.save(meal);
+
+
+                    Order_Meal orderMeal = new Order_Meal();
+                    orderMeal.setMeal(meal);
+                    orderMeal.setOrder(savedOrder);
+                    orderMeal.setQuantity(mealOrds.getQuantity());
+                    return orderMeal;
+                })
+                .toList();
+
+        order_MealRepository.saveAll(orderMeals);
+        savedOrder.setOrder_Meals(orderMeals);
+        return orderMapper.toResponse(savedOrder);
     }
 
     @Override

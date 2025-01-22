@@ -1,4 +1,7 @@
 package com.backend.miamapp.Service.Impl;
+import com.backend.miamapp.DTO.Meal.UpdateQuantity;
+import com.backend.miamapp.Entity.Restaurant;
+import com.backend.miamapp.Repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.backend.miamapp.Repository.MealRepository;
 import com.backend.miamapp.DTO.Meal.CreateMealDTO;
@@ -13,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -22,13 +26,20 @@ public class MealServiceImpl implements MealService {
     private MealRepository mealRepository;
 
     @Autowired
+    private RestaurantRepository restaurantRepository;
+
+    @Autowired
     private MealMapper mealMapper;
 
     @Override
     public ResponseMealDTO createMeal(CreateMealDTO createMealDTO) {
+        Restaurant restaurant = restaurantRepository.findById(createMealDTO.getRestaurant_id())
+                .orElseThrow(() -> new EntityNotFoundException("Restaurant not found"));
+
         Meal entity = mealMapper.toEntity(createMealDTO);
+        entity.setRestaurant(restaurant);
         Meal meal = mealRepository.save(entity);
-        return mealMapper.toResponse(entity);
+        return mealMapper.toResponse(meal);
     }
 
     @Override
@@ -67,4 +78,22 @@ public class MealServiceImpl implements MealService {
     public ResponseMealDTO updateMeal(CreateMealDTO createMealDTO , Long id) {
         return null;
     }
+
+
+
+    @Override
+    public List<ResponseMealDTO> getTop3OrdredMeals() {
+        List<Meal> Top3Meals  = mealRepository.findTop3MostOrderedMeals();
+        return Top3Meals.stream().map(mealMapper::toResponse).toList();
+    }
+
+    @Override
+    public ResponseMealDTO updateQuantity(UpdateQuantity updateQuantity) {
+        Meal meal = mealRepository.findById(updateQuantity.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Meal not found with id: " + updateQuantity.getId()));
+        meal.setQuantity(updateQuantity.getQuantity());
+        mealRepository.save(meal);
+        return mealMapper.toResponse(meal);
+    }
+
 }

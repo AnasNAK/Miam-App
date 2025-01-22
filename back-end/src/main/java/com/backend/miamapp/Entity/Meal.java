@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Duration;
+import java.util.List;
 
 @Entity
 @Data
@@ -36,7 +37,13 @@ public class Meal {
     @Enumerated(EnumType.STRING)
     private MealCategory category;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.REMOVE)
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE , mappedBy = "meal")
+    private List<Order_Meal> orderMeals;
 }

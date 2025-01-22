@@ -12,6 +12,7 @@ public interface  RestaurantService {
     Page<ResponseRestaurantDTO> getAllRestaurants(Pageable pageable);
     ResponseRestaurantDTO getRestaurantById(Long id);
     ResponseRestaurantDTO updateRestaurant(CreateRestaurantDTO createRestaurantDTO , Long id);
+    List<ResponseRestaurantDTO> searchRestaurantByName(String restaurantName);
     boolean deleteRestaurant(Long id);
 
 }
