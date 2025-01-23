@@ -1,0 +1,12 @@
+:host{
+    
+    display: flex;
+    justify-content: space-between;
+
+}
+
+img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: .5rem;
+}
