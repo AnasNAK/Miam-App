@@ -1,0 +1,10 @@
+<div class="mt-6">
+  <header>
+    <h1 class="text-3xl font-medium">Choose <span class="text-primary">Dishes</span></h1>
+  </header>
+  <div class="flex my-16 items-center gap-5">
+    @for (meal of meals; track meal.id) {
+    <app-meals-card [meal]="meal"></app-meals-card>
+    }
+  </div>
+</div>
