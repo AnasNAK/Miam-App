@@ -1,0 +1,22 @@
+<h3 class="text-2xl font-bold italic">
+    Order Summary
+</h3>
+<div class="w-full h-[5rem] flex flex-col gap-1">
+    <h2 class="text-lg italic">Payment Method</h2>
+    <app-payments></app-payments>
+</div>
+<div class="w-full h-[5rem] flex flex-col gap-1" *ngIf="isSelected" >
+    <h2 class="text-lg italic">How much you will be paying?</h2>
+    <input type="number " class="border rounded-md p-2" [min]="FullPrice$">
+</div>
+<div class="flex justify-end flex-col w-full h-full p-3 gap-3">
+    <p *ngIf="PaymenMethod" class="flex justify-between">
+        Payment method : <span class="font-bold">{{PaymenMethod ?? "Still no payment"}}</span>
+    </p>
+    <p *ngIf="FullPrice$ | async as fullPrice;" class="w-full flex justify-between">
+        Full Price: <span class="font-bold">${{ fullPrice ?? 0}}</span>
+      </p>
+      <div class="flex justify-end">
+        <Button class="bg-primary text-white p-2 rounded-lg ps-4 pe-4">Order</Button>
+      </div>
+</div>

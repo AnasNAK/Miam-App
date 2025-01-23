@@ -1,0 +1,36 @@
+
+  
+  .container {
+    
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+  }
+  
+  .meal-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .meal-table th,
+  .meal-table td  {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .meal-table thead {
+    background-color: #E56338;
+    color: #fff;
+  }
+  
+ 
+  
+  

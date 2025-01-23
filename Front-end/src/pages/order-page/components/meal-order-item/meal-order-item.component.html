@@ -1,0 +1,12 @@
+<div class="rounded-md border w-[20%] p-1">
+    <img [src]="meal.imageUrl" class="w-full h-full" alt="">
+</div>
+<div class="w-full roboto">
+   <div class="flex justify-between">
+    <h4 class="font-bold">{{meal.name}}</h4>
+    <p class="flex gap-3 text-gray-400">${{meal.price_per_unit}} <span>x{{meal.quantity}}</span></p>
+   </div>
+    <p class="text-primary">{{meal.description}}</p>
+</div>
+<p class="w-[20%] roboto font-bold text-center">${{meal.price_per_unit * meal.quantity}}</p>
+
