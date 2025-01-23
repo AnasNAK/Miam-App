@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { CartComponent } from "./components/cart/cart.component";
-import { InformationComponent } from "./components/information/information.component";
-import { MenuComponent } from "./components/menu/menu.component";
-import { TabsComponent } from "./components/tabs/tabs.component";
+import { CartComponent } from './components/cart/cart.component';
+import { InformationComponent } from './components/information/information.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { TabsComponent } from './components/tabs/tabs.component';
 import { Meal } from '../../entities/meals/model/meals.model';
 
 @Component({
   selector: 'app-resturant',
   imports: [CartComponent, InformationComponent, MenuComponent, TabsComponent],
   templateUrl: './resturant.component.html',
-  styleUrl: './resturant.component.css'
+  styleUrl: './resturant.component.css',
 })
-export class ResturantComponent implements OnInit{
+export class ResturantComponent implements OnInit {
   categories = [
     {
       key: 'APPETIZER',
@@ -38,18 +38,16 @@ export class ResturantComponent implements OnInit{
     },
   ];
   meals: Meal[] = [
-
     {
-
       id: 1,
       name: 'Classic Margherita Pizza',
       preparationTime: new Date(),
-      description: 'Traditional Italian pizza with fresh tomatoes and mozzarella',
+      description:
+        'Traditional Italian pizza with fresh tomatoes and mozzarella',
       price: 12.99,
       quantity: 15,
       category: 'MAIN_COURSE',
-      imageUrl: 'https://example.com/pizza.jpg'
-
+      imageUrl: 'https://example.com/pizza.jpg',
     },
 
     {
@@ -57,10 +55,10 @@ export class ResturantComponent implements OnInit{
       name: 'Caesar Salad',
       preparationTime: new Date(),
       description: 'Fresh romaine lettuce with Caesar dressing and croutons',
-      price: 8.50,
+      price: 8.5,
       quantity: 20,
       category: 'APPETIZER',
-      imageUrl: 'https://example.com/caesar-salad.jpg'
+      imageUrl: 'https://example.com/caesar-salad.jpg',
     },
 
     {
@@ -71,7 +69,7 @@ export class ResturantComponent implements OnInit{
       price: 6.99,
       quantity: 10,
       category: 'DESSERT',
-      imageUrl: 'https://example.com/lava-cake.jpg'
+      imageUrl: 'https://example.com/lava-cake.jpg',
     },
 
     {
@@ -79,10 +77,10 @@ export class ResturantComponent implements OnInit{
       name: 'Fresh Lemonade',
       preparationTime: new Date(),
       description: 'Homemade fresh lemonade with mint',
-      price: 4.50,
+      price: 4.5,
       quantity: 25,
       category: 'BEVERAGE',
-      imageUrl: 'https://example.com/lemonade.jpg'
+      imageUrl: 'https://example.com/lemonade.jpg',
     },
 
     {
@@ -93,27 +91,49 @@ export class ResturantComponent implements OnInit{
       price: 18.99,
       quantity: 12,
       category: 'MAIN_COURSE',
-      imageUrl: 'https://example.com/salmon.jpg'
-    }
-
+      imageUrl: 'https://example.com/salmon.jpg',
+    },
   ];
-  filteredMeals : Meal[] = []
-  selectedCategory = this.categories[0].key
+  cart : Meal[] = [] 
 
+  filteredMeals: Meal[] = [];
+  selectedCategory = this.categories[0].key;
+  searchTerm : string = ''
   ngOnInit(): void {
-    this.filteredMeals = this.filterByCategory(this.selectedCategory)
+    this.performSearch()
   }
 
-  onTabChange(category : string ) : void {
+  onSearchInput(val: string): void {
+    this.searchTerm = val.trim();
+    this.performSearch()
+  }
+
+  addToCart(selectedMeal : Meal) : void {
+    if (!this.cart.includes(selectedMeal)) {
+      this.cart.push(selectedMeal);
+    }
+    this.updateStrorage();
+  }
+
+  updateStrorage() : void{
+    window.localStorage.setItem('cart' , JSON.stringify(this.cart))
+  }
+  onTabChange(category: string): void {
     this.selectedCategory = category;
-    this.filteredMeals = this.filterByCategory(this.selectedCategory)
-  } 
-
-  filterByCategory(category : string) : Meal[] {
-    return this.meals.filter(meal => meal.category === category)
+    this.performSearch()
   }
-  
 
+  performSearch(): void {
+    let meals =  this.meals.filter((meal) => meal.category === this.selectedCategory);
+    console.log(this.searchTerm);
+    
+    if (this.searchTerm) {
+      meals =  this.meals.filter((meal) => {
+        meal.name.toLocaleLowerCase() ===this.searchTerm.toLocaleLowerCase()
+      });
 
-  
+    }
+    
+    this.filteredMeals= meals;
+  }
 }

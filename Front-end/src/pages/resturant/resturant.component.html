@@ -3,7 +3,7 @@
     <div class="wrapper_menu flex flex-col p-5 overflow-hidden bg-gray-100 w-[70%]">
         <app-information></app-information>
         <app-tabs [categories]="categories" [currentTab]="selectedCategory" (tabChange)="onTabChange($event)"></app-tabs>
-        <app-menu [meals]="filteredMeals"></app-menu>
+        <app-menu (selectedMeal)="addToCart($event)" (searchVal)="onSearchInput($event)" [meals]="filteredMeals"></app-menu>
     </div>
     <div class="wrapper_cart fixed top-0 z-10 right-0 w-[30%] bg-secondary h-full">
         <app-cart></app-cart>

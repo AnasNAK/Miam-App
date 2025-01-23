@@ -1,10 +1,13 @@
 <div class="mt-6">
-  <header>
+  <header class="flex items-center justify-between">
     <h1 class="text-3xl font-medium">Choose <span class="text-primary">Dishes</span></h1>
+    <div class="search_field">
+        <input type="text" placeholder="Search meals..." [(ngModel)]="inputValue" (input)="onInputChange()" class="py-2 px-4 min-w-[290px] shadow-sm shadow-gray-100 outline-none rounded-lg ">
+    </div>
   </header>
   <div class="flex my-16 items-center gap-5">
     @for (meal of meals; track meal.id) {
-    <app-meals-card [meal]="meal"></app-meals-card>
+    <app-meals-card (selectedMeal)="onSelectMeal($event)"  [meal]="meal"></app-meals-card>
     }
   </div>
 </div>
