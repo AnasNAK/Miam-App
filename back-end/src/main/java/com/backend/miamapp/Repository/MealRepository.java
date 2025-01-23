@@ -12,6 +12,6 @@ public interface MealRepository extends JpaRepository<Meal,Long> {
     @Query("SELECT m FROM Meal m " +
             "JOIN m.orderMeals om " +
             "GROUP BY m " +
-            "ORDER BY COUNT(om) DESC LIMIT 3")
+            "ORDER BY COUNT(om) DESC LIMIT 4")
     List<Meal> findTop3MostOrderedMeals();
 }
