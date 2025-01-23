@@ -9,7 +9,7 @@ const initialState: flexibleOrder = {
     meals: [],
     total_command_price: null,
     total_preparation_time:null
-  };
+};
 
 export const orderReducer  = createReducer (
     initialState,
