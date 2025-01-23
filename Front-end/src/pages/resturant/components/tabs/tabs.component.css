@@ -1,0 +1,26 @@
+.tab {
+    padding-block: 12px;
+    font-size: 15px;
+    position:relative;
+    color: #666;
+    transition: 0.3s ease-in-out ;
+}
+.tab::after {
+    content: '';
+    position: absolute;
+    bottom : -1px;
+    left:0%;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary);
+    transform: translateX(20%);
+    transition: 0.3s ease-in-out ;
+
+}
+.tab.active{
+    color: var(--primary);
+
+}
+.tab.active::after {
+    width: 70%;
+}
