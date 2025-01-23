@@ -13,7 +13,7 @@
 <!-- The change the client will provide us-->
 <div class="w-full h-[5rem] flex flex-col gap-1" *ngIf="isSelected">
     <h2 class="text-lg italic">How much cash will you provide?</h2>
-    <input (ngModelChange)="CalculateChange()" [min]="cieliItem(fullprice)" *ngIf="FullPrice$ | async as fullprice" type="number" [(ngModel)]="Change" placeholder="Enter the amount of cash you will pay" class="border rounded-md p-2">
+    <input (ngModelChange)="CalculateChange()" [min]="fullprice" *ngIf="FullPrice$ | async as fullprice" type="number" [(ngModel)]="Change" placeholder="Enter the amount of cash you will pay" class="border rounded-md p-2">
 </div>
 
 <!-- Summary Infos , below-->

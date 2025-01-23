@@ -14,4 +14,4 @@ export const LoadPaymentMethod = createAction('[Order / Load Payment Method]');
 export const UpdatePaymentMethod = createAction(
     '[Order / Update Payment Method]',
     props<{method:PaymentMethod}>()
-    );
+);

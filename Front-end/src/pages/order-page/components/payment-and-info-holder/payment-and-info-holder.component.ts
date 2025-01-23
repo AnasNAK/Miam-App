@@ -64,18 +64,9 @@ export class PaymentAndInfoHolderComponent implements OnInit {
 
 
   CalculateChange() : void {
-    this.FullPrice$.subscribe((fullprice) => {
-      if(fullprice != null) {
-        this.clientChange = this.Change - fullprice
-        console.log(this.clientChange);
-      }
-    })
+    alert(this.Change)
   }
 
-
-  cieliItem(price : number ){
-    return Math.ceil(price);
-  }
 
   
 }
