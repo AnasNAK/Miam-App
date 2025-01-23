@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { ContentLayoutComponent } from '../layouts/content-layout/content-layout.component';
 import { DashboardLayoutComponent } from '../layouts/dashboard-layout/dashboard-layout.component';
-import { DashboardMealsListComponent } from '../entities/dashboard-meals-list/dashboard-meals-list.component';
-import { DashboardOngoingOrdersListComponent } from '../entities/dashboard-ongoing-orders-list/dashboard-ongoing-orders-list.component';
+import { DashboardMealsListComponent } from '../entities/dashboard/dashboard-meals-list/dashboard-meals-list.component';
+import { DashboardOngoingOrdersListComponent } from '../entities/dashboard/dashboard-ongoing-orders-list/dashboard-ongoing-orders-list.component';
 import { OrderPageComponent } from '../pages/order-page/order-page.component';
 
 
