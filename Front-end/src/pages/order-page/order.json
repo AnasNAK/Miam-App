@@ -1,0 +1,21 @@
+{
+    "order": {
+      "orderId": 1,
+      "orderDate": "2025-01-22T14:30:00",
+      "meals": [
+        {
+          "mealId": 1,
+          "name": "Caesar Salad",
+          "quantity": 1,
+          "price": 8.99
+        },
+        {
+          "mealId": 2,
+          "name": "Tomato Soup",
+          "quantity": 1,
+          "price": 5.99
+        }
+      ],
+      "totalAmount": 14.98
+    }
+}
