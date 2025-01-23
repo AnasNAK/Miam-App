@@ -31,7 +31,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/Auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
-
                 .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Set session policy to stateless
         )
