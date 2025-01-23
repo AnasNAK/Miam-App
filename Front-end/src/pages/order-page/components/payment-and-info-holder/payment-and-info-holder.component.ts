@@ -16,6 +16,7 @@ import { PaymentMethod } from '../../Models/order.module';
 export class PaymentAndInfoHolderComponent implements OnInit {
 
   FullPrice$: Observable<number | null>;
+  PaymenMethod?: string;
 
   isSelected : boolean = false;
   
@@ -28,6 +29,9 @@ export class PaymentAndInfoHolderComponent implements OnInit {
     this.store.dispatch(CalculateFullPrice());
     this.store.select(selectPaymentMethod).subscribe((currentMethod) => {
       this.isSelected = currentMethod === PaymentMethod.Cash;
+      if(currentMethod != null) {
+        this.PaymenMethod = PaymentMethod[currentMethod];
+      }
     });
   }
 }

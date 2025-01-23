@@ -7,6 +7,8 @@ import { Store } from '@ngrx/store';
 import { CalculateFullPrice, CalculateTimeToPrepare, LoadOrder } from './service/order.actions';
 import { MealSecondholderComponent } from "./components/meal-secondholder/meal-secondholder.component";
 import { PaymentAndInfoHolderComponent } from "./components/payment-and-info-holder/payment-and-info-holder.component";
+import {faPaperPlane} from "@ng-icons/font-awesome/regular"
+import {NgIcon, provideIcons} from '@ng-icons/core';
 
 
 const orderData = {
@@ -47,9 +49,10 @@ const orderData = {
 
 @Component({
   selector: 'app-order-page',
-  imports: [CommonModule, MealHolderOrderPageComponent, PaymentAndInfoHolderComponent],
+  imports: [CommonModule, MealHolderOrderPageComponent, PaymentAndInfoHolderComponent , NgIcon],
   templateUrl: './order-page.component.html',
-  styleUrl: './order-page.component.css'
+  styleUrl: './order-page.component.css',
+  viewProviders: [provideIcons({faPaperPlane})]
 })
 
 export class OrderPageComponent implements OnInit {
