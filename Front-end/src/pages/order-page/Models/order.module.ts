@@ -1,4 +1,5 @@
-import { Order_Meal } from "./order_meals.module"
+import { Order_Meal } from "./order_meals.module";
+
 
 export enum PaymentMethod {
     Cash,
@@ -25,7 +26,7 @@ export interface flexibleOrder{
     orderDate:Date,
     paymentMethod:PaymentMethod | null,
     status:OrderStatus.PENDING,
-    meals:meals[],
+    meals:Meal[],
     total_command_price: number | null;
     total_preparation_time:string |null;
 }
@@ -38,7 +39,7 @@ export interface  MealsOrdsList {
     quantity:number
 }
 
-export interface meals {
+export interface Meal {
     id:number
     name: string;
     description: string;
