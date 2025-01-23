@@ -1,0 +1,123 @@
+:host{
+    position: relative;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    color: #2D2928;
+}
+
+.hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: #E56338;
+    width: 100%;
+    border-radius: 1rem 0rem;
+    height: 50px;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 1px solid #E56338;
+    display: flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: .9rem;
+    opacity: 0.9;
+}
+
+.hero h1{
+    font-weight: 600;
+}
+
+.details{
+    margin: 1rem 0;
+    border-bottom: 1px solid #E56338;
+    padding-bottom: 1rem;
+    margin-top: 3rem;
+}
+.details h2{
+    font-weight: 600;
+}
+
+
+.details-2 div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.price h2{
+    font-weight: bold;
+}
+.price p span{
+    color: #E56338;
+    font-weight: 500;
+}
+
+.price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.status{
+    background-color: #ffef0b62;
+    text-align: center;
+    border-radius: .5rem;
+    padding: .6rem 0;
+    opacity: 0.8;
+    margin: 1rem 0;
+    width: 80%;
+}
+.status:hover{
+    opacity: 1;
+}
+
+
+.action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+
+  .modern-button {
+    padding: .5rem .5rem;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+   
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  
+  .a{
+    background-color: #b2e6b6;
+  }
+  .a:hover{
+    background-color: #c8e6c9;
+  }
+
+
+  .b{
+    background-color: #ddabab;
+  }
+  .b:hover{
+    background-color: #e6c8c8;
+  }
+
+  .details-3{
+    margin: 1rem 0;
+  }
+  .details-3 h2{
+    font-weight: bold;
+
+
+  }
