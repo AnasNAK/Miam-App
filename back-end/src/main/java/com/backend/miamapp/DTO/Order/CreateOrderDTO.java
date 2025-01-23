@@ -24,5 +24,7 @@ public class CreateOrderDTO {
     @NotEmpty
     private OrderStatus status = OrderStatus.PENDING;
     @NotEmpty
+    private String note;
+    @NotEmpty
     private List<MealsOrds> MealsOrdsList;
 }

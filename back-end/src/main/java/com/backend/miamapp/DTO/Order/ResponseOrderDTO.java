@@ -21,5 +21,6 @@ public class ResponseOrderDTO {
     private LocalDateTime orderDate;
     private PaymentMethod paymentMethod;
     private OrderStatus status = OrderStatus.PENDING;
+    private String note;
     private List<MealForOrders> meals;
 }

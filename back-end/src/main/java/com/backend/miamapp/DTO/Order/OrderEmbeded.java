@@ -15,5 +15,6 @@ public class OrderEmbeded {
     private Long id;
     private LocalDateTime orderDate;
     private PaymentMethod paymentMethod;
+    private String note;
     private OrderStatus status = OrderStatus.PENDING;
 }

@@ -30,6 +30,9 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
+    @Column(name = "note")
+    private String note;
+
     @OneToMany(mappedBy = "order" , fetch = FetchType.EAGER , cascade = CascadeType.REMOVE)
     private List<Order_Meal> Order_Meals;
 }
