@@ -1,0 +1,64 @@
+{
+  "hash": "dbccead0",
+  "configHash": "ae30d876",
+  "lockfileHash": "da7bc18a",
+  "browserHash": "ea0f7181",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "adcdc795",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "bec6aa58",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "aa89d3ed",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "301a117c",
+      "needsInterop": false
+    },
+    "@ng-icons/core": {
+      "src": "../../../../../../node_modules/@ng-icons/core/fesm2022/ng-icons-core.mjs",
+      "file": "@ng-icons_core.js",
+      "fileHash": "468bbf9c",
+      "needsInterop": false
+    },
+    "@ng-icons/font-awesome/regular": {
+      "src": "../../../../../../node_modules/@ng-icons/font-awesome/fesm2022/ng-icons-font-awesome-regular.mjs",
+      "file": "@ng-icons_font-awesome_regular.js",
+      "fileHash": "1c5d9bbf",
+      "needsInterop": false
+    },
+    "@ngrx/store": {
+      "src": "../../../../../../node_modules/@ngrx/store/fesm2022/ngrx-store.mjs",
+      "file": "@ngrx_store.js",
+      "fileHash": "9dd056c9",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-AWIGWCWD": {
+      "file": "chunk-AWIGWCWD.js"
+    },
+    "chunk-Q3LVLHIF": {
+      "file": "chunk-Q3LVLHIF.js"
+    },
+    "chunk-TDJF5FIJ": {
+      "file": "chunk-TDJF5FIJ.js"
+    },
+    "chunk-WDMUDEB6": {
+      "file": "chunk-WDMUDEB6.js"
+    }
+  }
+}
