@@ -9,10 +9,13 @@ import { flexibleOrder, PaymentMethod } from '../../Models/order.module';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {faPaperPlane} from '@ng-icons/font-awesome/regular'
 import { FormsModule } from '@angular/forms';
+import { SummaryParagraphsComponent } from "../summary-paragraphs/summary-paragraphs.component";
+import { PaymentMethodComponent } from "../payment-method/payment-method.component";
+import { SummaryInfosComponent } from "../summary-infos/summary-infos.component";
 
 @Component({
   selector: 'app-payment-and-info-holder',
-  imports: [PaymentsComponent , CommonModule , NgIcon , FormsModule],
+  imports: [PaymentsComponent, CommonModule, NgIcon, FormsModule, SummaryParagraphsComponent, PaymentMethodComponent, SummaryInfosComponent],
   templateUrl: './payment-and-info-holder.component.html',
   styleUrl: './payment-and-info-holder.component.css',
   viewProviders: [provideIcons({faPaperPlane})]
@@ -24,6 +27,8 @@ export class PaymentAndInfoHolderComponent implements OnInit {
   PaymenMethod?: string;
 
   Change!:number;
+  clientChange!:number | null;
+
 
   isSelected : boolean = false;
   
@@ -38,9 +43,6 @@ export class PaymentAndInfoHolderComponent implements OnInit {
     this.store.dispatch(CalculateFullPrice());
     this.store.select(selectPaymentMethod).subscribe((currentMethod) => {
       this.isSelected = currentMethod === PaymentMethod.Cash;
-      if(currentMethod != null) {
-        this.PaymenMethod = PaymentMethod[currentMethod];
-      }
     });
   }
 
@@ -61,7 +63,19 @@ export class PaymentAndInfoHolderComponent implements OnInit {
   };
 
 
-  CalculateChange() : number {
-    return this.Change
+  CalculateChange() : void {
+    this.FullPrice$.subscribe((fullprice) => {
+      if(fullprice != null) {
+        this.clientChange = this.Change - fullprice
+        console.log(this.clientChange);
+      }
+    })
   }
+
+
+  cieliItem(price : number ){
+    return Math.ceil(price);
+  }
+
+  
 }
