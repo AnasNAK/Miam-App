@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopularPicksComponent } from './popular-picks.component';
+import { TabsComponent } from './tabs.component';
 
-describe('PopularPicksComponent', () => {
-  let component: PopularPicksComponent;
-  let fixture: ComponentFixture<PopularPicksComponent>;
+describe('TabsComponent', () => {
+  let component: TabsComponent;
+  let fixture: ComponentFixture<TabsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PopularPicksComponent]
+      imports: [TabsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PopularPicksComponent);
+    fixture = TestBed.createComponent(TabsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
