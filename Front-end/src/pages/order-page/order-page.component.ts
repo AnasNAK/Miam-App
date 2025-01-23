@@ -9,6 +9,7 @@ import { MealSecondholderComponent } from "./components/meal-secondholder/meal-s
 import { PaymentAndInfoHolderComponent } from "./components/payment-and-info-holder/payment-and-info-holder.component";
 import {faPaperPlane} from "@ng-icons/font-awesome/regular"
 import {NgIcon, provideIcons} from '@ng-icons/core';
+import { selectOrderState } from './service/order.selectors';
 
 
 const orderData = {
@@ -60,7 +61,7 @@ export class OrderPageComponent implements OnInit {
   OrderData$:Observable<flexibleOrder | null>;
 
   constructor(private store:Store<{order:flexibleOrder |null}>){
-    this.OrderData$ = this.store.select('order');
+    this.OrderData$ = this.store.select(selectOrderState);
   }
 
   ngOnInit(): void {
@@ -85,21 +86,5 @@ export class OrderPageComponent implements OnInit {
   //   }
   // }
 
-
-
-  formatDate(isoDate: Date): string  {
-    const date = new Date(isoDate);
-    
-    const day = date.getDate();
-    const month = date.toLocaleString('default', { month: 'long' });
-    const year = date.getFullYear();
-    const hours = date.getHours();
-    const minutes = date.getMinutes().toString().padStart(2, '0'); 
-    const ampm = hours >= 12 ? 'pm' : 'am';
-  
-    const formattedHours = hours % 12 || 12; 
-  
-    return `${day} ${month.toLowerCase()} , ${formattedHours}:${minutes}${ampm}`;
-  };
 
 }

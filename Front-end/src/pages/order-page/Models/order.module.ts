@@ -18,6 +18,7 @@ export interface Order {
     orderDate:Date,
     paymentMethod:PaymentMethod
     status:OrderStatus,
+    note:String,
     meals:Order_Meal[]
 }
 
@@ -26,8 +27,10 @@ export interface flexibleOrder{
     paymentMethod:PaymentMethod | null,
     status:OrderStatus.PENDING,
     meals:meals[],
+    note:String | null,
     total_command_price: number | null;
     total_preparation_time:string |null;
+    client_money:number |null;
 }
 
 // to send data to backend you need 
@@ -51,6 +54,7 @@ export interface meals {
 export interface CreateOrder {
     orderDate:Date,
     paymentMethod:PaymentMethod
-    status:OrderStatus ,
+    status:OrderStatus,
+    note:String,
     MealsOrdsList: MealsOrdsList[]
 }

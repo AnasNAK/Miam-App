@@ -1,3 +1,4 @@
-<div (click)="UpdatePaymentMethod()" class="item w-full flex items-center h-[3rem] ps-4 rounded-lg border" [ngClass]="{ 'border-primary': isSelected }">
+<div (click)="UpdatePaymentMethod()" class="item w-full flex gap-3 items-center h-[3rem] ps-4 rounded-lg border" [ngClass]="{ 'border-primary': isSelected }">
+    <ng-icon [ngClass]="{ 'text-primary': isSelected }" class="text-2xl" [name]="Type === PaymentMethod.CreditCard ? 'faCreditCard' : 'faMoneyBill1'"></ng-icon>
     <p>{{PaymentMethod[Type]}}</p>
 </div>

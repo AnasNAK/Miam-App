@@ -7,8 +7,10 @@ const initialState: flexibleOrder = {
     paymentMethod: PaymentMethod.Cash,
     status:OrderStatus.PENDING,
     meals: [],
+    note:null,
     total_command_price: null,
-    total_preparation_time:null
+    total_preparation_time:null,
+    client_money:null
   };
 
 export const orderReducer  = createReducer (

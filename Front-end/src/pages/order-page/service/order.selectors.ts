@@ -10,3 +10,7 @@ export const selectFullPrice = createSelector(
     selectOrderState,
     (state:flexibleOrder) => state.total_command_price
 )
+export const selectclientMoney = createSelector(
+    selectOrderState,
+    (state:flexibleOrder) => state.client_money
+)
