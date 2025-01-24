@@ -66,7 +66,6 @@ export class OrderPageComponent implements OnInit {
     this.store.dispatch(CalculateFullPrice());
     this.store.dispatch(CalculateTimeToPrepare());
     this.OrderData$.subscribe((data) => {
-      console.log('Order Data:', data);
     });
   }
 

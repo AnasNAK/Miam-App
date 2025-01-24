@@ -2,16 +2,16 @@ import { Order_Meal } from "./order_meals.module";
 
 
 export enum PaymentMethod {
-    Cash,
-    CreditCard
+    Cash = 'Cash',
+    CreditCard = 'CreditCard',
 }
 export enum OrderStatus {
-    PENDING,
-    COMPLETED,
-    CANCELLED,
-    DELIVERED,
-    ACCEPTED,
-    REJECTED
+    PENDING = 'PENDING',
+    COMPLETED = 'COMPLETED',
+    CANCELLED = 'CANCELLED',
+    DELIVERED = 'DELIVERED',
+    ACCEPTED = 'ACCEPTED',
+    REJECTED = 'REJECTED'
 }
 
 export enum MealCategory {
@@ -47,11 +47,11 @@ export interface  MealsOrdsList {
 }
 
 export interface CreateOrder {
-    orderDate:Date,
-    paymentMethod:PaymentMethod
-    status:OrderStatus,
-    note:String,
-    MealsOrdsList: MealsOrdsList[]
+    orderDate:Date | null,
+    paymentMethod:PaymentMethod |null
+    status:OrderStatus | null,
+    note:String |null,
+    MealsOrdsList: MealsOrdsList[] | null
 }
 
 

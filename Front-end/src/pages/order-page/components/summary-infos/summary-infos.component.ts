@@ -16,7 +16,7 @@ import { selectFullPrice, selectOrderState, selectPaymentMethod } from '../../St
   viewProviders:[provideIcons({faPaperPlane})]
 })
 export class SummaryInfosComponent implements OnInit {
-  PaymenMethod?: string;
+  PaymenMethod!: string;
   @Input() clientChange!:number;
 
    OrderData$: Observable<flexibleOrder | null>;
@@ -30,7 +30,7 @@ export class SummaryInfosComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(selectPaymentMethod).subscribe((currentMethod) => {
       if(currentMethod != null) {
-        this.PaymenMethod = PaymentMethod[currentMethod];
+        this.PaymenMethod = currentMethod;
       }
     });
   }
