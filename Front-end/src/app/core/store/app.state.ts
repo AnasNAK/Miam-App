@@ -1,5 +1,7 @@
 import { BestSellersInterface } from "../../../entities/meals/models/meals.models";
 
+
 export interface AppState {
-    bestSellers : BestSellersInterface
+    order: any;
+    bestSellers: BestSellersInterface;
 }
