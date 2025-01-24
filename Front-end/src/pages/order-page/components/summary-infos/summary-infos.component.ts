@@ -1,15 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectFullPrice, selectOrderState, selectPaymentMethod } from '../../service/order.selectors';
 import { flexibleOrder, PaymentMethod } from '../../Models/order.module';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import{faPaperPlane} from '@ng-icons/font-awesome/regular'
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { OrderButtonComponent } from "../order-button/order-button.component";
+import { selectFullPrice, selectOrderState, selectPaymentMethod } from '../../Store';
 
 @Component({
   selector: 'app-summary-infos',
-  imports: [NgIcon , CommonModule],
+  imports: [NgIcon, CommonModule, OrderButtonComponent],
   templateUrl: './summary-infos.component.html',
   styleUrl: './summary-infos.component.css',
   viewProviders:[provideIcons({faPaperPlane})]

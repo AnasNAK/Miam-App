@@ -20,6 +20,7 @@
     "@angular/router": "^19.0.0",
     "@ng-icons/core": "^30.2.0",
     "@ng-icons/font-awesome": "^30.2.0",
+    "@ngrx/effects": "^19.0.0",
     "@ngrx/store": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

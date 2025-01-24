@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { CalculateFullPrice, ChangePrice } from '../../service/order.actions';
 import { PaymentsComponent } from "../payments/payments.component";
 import { Observable } from 'rxjs';
-import { selectclientMoney, selectFullPrice, selectOrderState, selectPaymentMethod } from '../../service/order.selectors';
 import { CommonModule } from '@angular/common';
 import { flexibleOrder, PaymentMethod } from '../../Models/order.module';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -12,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { SummaryParagraphsComponent } from "../summary-paragraphs/summary-paragraphs.component";
 import { PaymentMethodComponent } from "../payment-method/payment-method.component";
 import { SummaryInfosComponent } from "../summary-infos/summary-infos.component";
+import { CalculateFullPrice, selectclientMoney, selectFullPrice, selectOrderState, selectPaymentMethod } from '../../Store';
 
 @Component({
   selector: 'app-payment-and-info-holder',

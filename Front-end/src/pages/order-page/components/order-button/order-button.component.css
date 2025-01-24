@@ -1,0 +1,21 @@
+:host {
+    display: flex;
+    justify-content:end;
+    width: 100%;
+}
+
+.buttonOrder {
+    position: relative;
+    animation: button 700ms  ease-in-out forwards;
+}
+
+@keyframes button {
+0%{
+    bottom: -1rem;
+    opacity: 0;
+}
+100%{
+    bottom: 0;
+    opacity: 1;
+}
+}

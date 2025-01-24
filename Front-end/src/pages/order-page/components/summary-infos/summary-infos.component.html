@@ -27,7 +27,15 @@
         </span>
         <span class="font-bold text-green-400">{{ orderData.total_preparation_time }}</span>  
     </p>
-      <div class="flex justify-end">
-        <Button class="bg-primary text-white p-2 rounded-lg ps-4 pe-4">Order</Button>
-      </div>
+
+
+    @if (PaymenMethod) {
+            <app-order-button></app-order-button>
+    }
+
+
+      
+
+
+
 </div>
