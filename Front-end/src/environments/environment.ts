@@ -1,4 +1,4 @@
 export const environment = {
-    production : false
-    // apiUrl : li ja hna i hayd l comment o idir l'url dyal API 
+    production : false,
+    apiUrl : "http://localhost:8080"
 }

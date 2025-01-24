@@ -5,8 +5,10 @@ import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { reducers } from './core/reducers';
 import { provideEffects } from '@ngrx/effects';
-import { HttpClient } from '@angular/common/http';
+import { HomeEffect } from '../pages/home/state/home.effects';
+import { provideHttpClient } from '@angular/common/http';
+
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }),HttpClient ,provideRouter(routes), provideStore(reducers), provideEffects()]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideStore(reducers), provideEffects([HomeEffect]) , provideHttpClient()]
 };

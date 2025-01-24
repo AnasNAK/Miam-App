@@ -20,12 +20,6 @@ export const Reducer = createReducer(
         ...state,
         loading:true,
         error:null
-    })),
-    on(PersisteOrderSuccess , (state , {response}) => ({
-        ...state,
-        order:response,
-        loading:false,
-        error:null
-    })),
+    }))
     
 )

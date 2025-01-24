@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Meal } from '../../../order-page/Models';
 
 @Component({
   selector: 'app-popular-picks-item',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './popular-picks-item.component.css'
 })
 export class PopularPicksItemComponent {
-
+   @Input() meal !: Meal;
 }
