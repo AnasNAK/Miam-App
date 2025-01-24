@@ -4,10 +4,11 @@ import { BlogsComponent } from "./components/blogs/blogs.component";
 import { PopularPicksComponent } from './components/popular-picks/popular-picks.component';
 import { Store } from '@ngrx/store';
 import { initBestSellers } from './state/home.actions';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Meal } from '../order-page/Models';
 import { selectBestSellers, selectError, selectIsLoading } from './state/home.selectors';
 import { CommonModule } from '@angular/common';
+import { log } from 'console';
 
 
 @Component({
@@ -25,11 +26,17 @@ export class HomePageComponent implements OnInit{
   ngOnInit(): void {
     this.store.dispatch(initBestSellers());
   }
-
-  constructor(){
-    this.meals$ = this.store.select(selectBestSellers);
-    this.error$ = this.store.select(selectError);
-    this.isLoading$ = this.store.select(selectIsLoading);
-  }
-   
+  constructor() {
+    this.meals$ = this.store.select(selectBestSellers).pipe(
+      tap(meals => console.log('Meals:', meals)) // Log actual data
+    );
+    
+    this.isLoading$ = this.store.select(selectIsLoading).pipe(
+      tap(isLoading => console.log('Loading:', isLoading))
+    );
+    
+    this.error$ = this.store.select(selectError).pipe(
+      tap(error => console.log('Error:', error))
+    );
+  }   
 }

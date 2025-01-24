@@ -1,7 +1,8 @@
 import { createSelector } from "@ngrx/store";
 import { BestSellersInterface } from "../../../entities/meals/models/meals.models";
+import { AppState } from "../../../app/core/store/app.state";
 
-export const selectBestSellersState = (state: BestSellersInterface) => state;
+export const selectBestSellersState = (state: AppState) => state.bestSellers;
 
 export const selectBestSellers = createSelector(
   selectBestSellersState,
