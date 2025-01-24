@@ -2,4 +2,24 @@
     <app-home-hero></app-home-hero>
     <app-blogs></app-blogs>
     <app-popular-picks></app-popular-picks>
+    <ng-container *ngIf="meals$ | async as meals ; else loading">
+        <ng-container *ngIf="error$ | async as err">
+            <div>
+                {{err}}
+            </div>
+        </ng-container>
+        <div *ngFor="let meal of meals">
+            <div>
+                {{ meal.id}}
+            </div>
+            <div>
+                {{ meal.description}}
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #loading>
+        <div class="w-full h-full flex items-center justify-center">
+            loading ... 
+        </div>
+    </ng-template>
 </div>

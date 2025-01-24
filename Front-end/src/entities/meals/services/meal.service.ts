@@ -18,5 +18,4 @@ export class MealService {
     return this.http.get<Meal[]>(`${this.apiUrl}/meal/topOrderedMeals`);
   }
 
-  
 }

@@ -5,16 +5,18 @@ import * as homeActions from "./home.actions"
 
 export const bestSellersReducer = createReducer(
     initialBestSellersState,
-    on(homeActions.loadBestSellers , (state) => ({
+    on(homeActions.initBestSellers , (state) => ({
         ...state ,
         isLoading : true
     })),
     on(homeActions.loadBestSellersSuccess , (state , action ) => ({
         ...state,
+        isLoading : false,
         meals : action.meals
     })),
     on(homeActions.loadBestSellersFailure , (state , action) => ({
-        ...state, 
+        ...state,
+        isLoading : false,
         error : action.error
     }))
 )

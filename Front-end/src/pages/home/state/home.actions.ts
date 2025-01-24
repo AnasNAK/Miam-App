@@ -3,11 +3,8 @@ import { create } from "domain";
 import { Meal } from "../../order-page/Models";
 
 
-export const init = createAction(
-    "[Home] Prepare to load data"
-)
 
-export const loadBestSellers = createAction(
+export const initBestSellers = createAction(
     "[Home] load Best Sellers",
 )
 
