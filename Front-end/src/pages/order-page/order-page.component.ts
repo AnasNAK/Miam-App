@@ -4,11 +4,10 @@ import { MealHolderOrderPageComponent } from "./components/meal-holder-order-pag
 import { Observable } from 'rxjs';
 import { flexibleOrder, Order } from './Models/order.module';
 import { Store } from '@ngrx/store';
-import { CalculateFullPrice, CalculateTimeToPrepare, LoadOrder } from './service/order.actions';
-import { MealSecondholderComponent } from "./components/meal-secondholder/meal-secondholder.component";
 import { PaymentAndInfoHolderComponent } from "./components/payment-and-info-holder/payment-and-info-holder.component";
 import {faPaperPlane} from "@ng-icons/font-awesome/regular"
 import {NgIcon, provideIcons} from '@ng-icons/core';
+import { CalculateFullPrice, CalculateTimeToPrepare, LoadOrder, selectOrderState } from './Store';
 
 
 const orderData = {
@@ -49,10 +48,9 @@ const orderData = {
 
 @Component({
   selector: 'app-order-page',
-  imports: [CommonModule, MealHolderOrderPageComponent, PaymentAndInfoHolderComponent , NgIcon],
+  imports: [CommonModule, MealHolderOrderPageComponent, PaymentAndInfoHolderComponent],
   templateUrl: './order-page.component.html',
   styleUrl: './order-page.component.css',
-  viewProviders: [provideIcons({faPaperPlane})]
 })
 
 export class OrderPageComponent implements OnInit {
@@ -60,7 +58,7 @@ export class OrderPageComponent implements OnInit {
   OrderData$:Observable<flexibleOrder | null>;
 
   constructor(private store:Store<{order:flexibleOrder |null}>){
-    this.OrderData$ = this.store.select('order');
+    this.OrderData$ = this.store.select(selectOrderState);
   }
 
   ngOnInit(): void {
@@ -85,21 +83,5 @@ export class OrderPageComponent implements OnInit {
   //   }
   // }
 
-
-
-  formatDate(isoDate: Date): string  {
-    const date = new Date(isoDate);
-    
-    const day = date.getDate();
-    const month = date.toLocaleString('default', { month: 'long' });
-    const year = date.getFullYear();
-    const hours = date.getHours();
-    const minutes = date.getMinutes().toString().padStart(2, '0'); 
-    const ampm = hours >= 12 ? 'pm' : 'am';
-  
-    const formattedHours = hours % 12 || 12; 
-  
-    return `${day} ${month.toLowerCase()} , ${formattedHours}:${minutes}${ampm}`;
-  };
 
 }

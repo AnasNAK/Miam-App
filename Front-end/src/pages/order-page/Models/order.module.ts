@@ -14,21 +14,28 @@ export enum OrderStatus {
     REJECTED
 }
 
+export enum MealCategory {
+
+}
+
 export interface Order {
     id:number,
     orderDate:Date,
     paymentMethod:PaymentMethod
     status:OrderStatus,
-    meals:Order_Meal[]
+    note:String,
+    meals:MealsForOrders[]
 }
 
 export interface flexibleOrder{
     orderDate:Date,
     paymentMethod:PaymentMethod | null,
     status:OrderStatus.PENDING,
+    note:String | null,
     meals:Meal[],
     total_command_price: number | null;
     total_preparation_time:string |null;
+    client_money:number |null;
 }
 
 // to send data to backend you need 
@@ -38,6 +45,17 @@ export interface  MealsOrdsList {
     id:number,
     quantity:number
 }
+
+export interface CreateOrder {
+    orderDate:Date,
+    paymentMethod:PaymentMethod
+    status:OrderStatus,
+    note:String,
+    MealsOrdsList: MealsOrdsList[]
+}
+
+
+// response embeds
 
 export interface Meal {
     id:number
@@ -49,9 +67,18 @@ export interface Meal {
     imageUrl: string;
 }
 
-export interface CreateOrder {
-    orderDate:Date,
-    paymentMethod:PaymentMethod
-    status:OrderStatus ,
-    MealsOrdsList: MealsOrdsList[]
+export interface MealsForOrders{
+    id:number
+    name: string;
+    description: string;
+    quantity: number;
+    price_per_unit: number;
+    preparationTime: number;
+    imageUrl: string;
+    category:MealCategory,
+    restaurant:Restaurant
+}
+
+export interface Restaurant {
+    name:string
 }

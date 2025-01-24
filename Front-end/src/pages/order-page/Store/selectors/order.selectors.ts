@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { flexibleOrder } from "../Models/order.module";
+import { flexibleOrder } from "../../Models/order.module";
 
 export const selectOrderState = createFeatureSelector<flexibleOrder>('order');
 export const selectPaymentMethod = createSelector(
@@ -9,4 +9,8 @@ export const selectPaymentMethod = createSelector(
 export const selectFullPrice = createSelector(
     selectOrderState,
     (state:flexibleOrder) => state.total_command_price
+)
+export const selectclientMoney = createSelector(
+    selectOrderState,
+    (state:flexibleOrder) => state.client_money
 )

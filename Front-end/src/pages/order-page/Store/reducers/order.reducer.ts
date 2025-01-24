@@ -1,15 +1,17 @@
 import { createReducer ,on } from "@ngrx/store";
-import { CalculateFullPrice, CalculateTimeToPrepare, ChangePrice, LoadOrder, LoadPaymentMethod, UpdatePaymentMethod } from "./order.actions";
-import { flexibleOrder, Order, OrderStatus, PaymentMethod } from "../Models/order.module";
+import { flexibleOrder, Order, OrderStatus, PaymentMethod } from "../../Models/order.module";
+import { CalculateFullPrice, CalculateTimeToPrepare, ChangePrice, LoadOrder, LoadPaymentMethod, UpdatePaymentMethod } from "../actions";
 
 const initialState: flexibleOrder = {
     orderDate: new Date(),
     paymentMethod: PaymentMethod.Cash,
     status:OrderStatus.PENDING,
     meals: [],
+    note:null,
     total_command_price: null,
-    total_preparation_time:null
-};
+    total_preparation_time:null,
+    client_money:null
+  };
 
 export const orderReducer  = createReducer (
     initialState,

@@ -8,6 +8,7 @@ import { provideEffects } from '@ngrx/effects';
 import { HomeEffect } from '../pages/home/state/home.effects';
 import { provideHttpClient } from '@angular/common/http';
 
+
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideStore(reducers), provideEffects([HomeEffect]) , provideHttpClient()]
 };
