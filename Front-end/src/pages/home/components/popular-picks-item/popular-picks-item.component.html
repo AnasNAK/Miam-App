@@ -6,10 +6,10 @@
 
         <div class="absolute w-full h-full bg-black bg-opacity-5 rounded-lg z-10"></div>
 
-        <img src="assets/images/meal3.png" 
+        <img [src]="meal.imageUrl"
              class="w-[70%] h-[70%] z-20 relative" 
              alt="Meal">
     </div>
-    <h2 class="font-medium text-secondary">Chicken wraps</h2>
-    <p class="text-gray-500 font-medium text-[.95rem]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae assumenda reiciendis, provident repellendus.</p>
+    <h2 class="font-medium text-secondary">{{meal.name}}</h2>
+    <p class="text-gray-500 font-medium text-[.95rem]">{{meal.description}}</p>
 </div>
