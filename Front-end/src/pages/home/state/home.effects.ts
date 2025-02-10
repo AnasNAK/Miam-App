@@ -5,9 +5,6 @@ import { initBestSellers, loadBestSellersFailure, loadBestSellersSuccess } from 
 import { catchError, map, mergeMap, of } from "rxjs";
 
 
-
-
-
 @Injectable()
 export class HomeEffect {
     private mealService = inject(MealService);

@@ -40,5 +40,4 @@ export const routes: Routes = [
     component : AuthComponent,
     loadChildren : () => import('../pages/auth/auth.routes').then(r => r.routes)
   }
-  
-];
+]
