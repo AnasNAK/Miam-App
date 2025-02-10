@@ -1,0 +1,73 @@
+{
+  "hash": "00b63109",
+  "configHash": "7e535d07",
+  "lockfileHash": "2fea8a73",
+  "browserHash": "5a6ac43b",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "93b648e6",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "142491ae",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "6579c44c",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "d34c84cd",
+      "needsInterop": false
+    },
+    "@ng-icons/core": {
+      "src": "../../../../../../node_modules/@ng-icons/core/fesm2022/ng-icons-core.mjs",
+      "file": "@ng-icons_core.js",
+      "fileHash": "cb6cd0b8",
+      "needsInterop": false
+    },
+    "@ng-icons/font-awesome/regular": {
+      "src": "../../../../../../node_modules/@ng-icons/font-awesome/fesm2022/ng-icons-font-awesome-regular.mjs",
+      "file": "@ng-icons_font-awesome_regular.js",
+      "fileHash": "5c922f68",
+      "needsInterop": false
+    },
+    "@ngrx/effects": {
+      "src": "../../../../../../node_modules/@ngrx/effects/fesm2022/ngrx-effects.mjs",
+      "file": "@ngrx_effects.js",
+      "fileHash": "bda554d2",
+      "needsInterop": false
+    },
+    "@ngrx/store": {
+      "src": "../../../../../../node_modules/@ngrx/store/fesm2022/ngrx-store.mjs",
+      "file": "@ngrx_store.js",
+      "fileHash": "33a7fa52",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-I6QN64T5": {
+      "file": "chunk-I6QN64T5.js"
+    },
+    "chunk-WZEXCOBM": {
+      "file": "chunk-WZEXCOBM.js"
+    },
+    "chunk-ISGUPZV7": {
+      "file": "chunk-ISGUPZV7.js"
+    },
+    "chunk-MOEB47GE": {
+      "file": "chunk-MOEB47GE.js"
+    },
+    "chunk-WDMUDEB6": {
+      "file": "chunk-WDMUDEB6.js"
+    }
+  }
+}
