@@ -4,7 +4,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 @Injectable({ providedIn: 'root' })
 export class TokenStorageService {
   static readonly JWT_KEY: string = 'access_token';
-
+  
   constructor(private storageService: LocalStorageService) {
     this.storageService = storageService;
   }

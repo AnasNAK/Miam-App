@@ -6,7 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AuthFacade } from '../../../app/core/auth/store/auth.facades';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,14 +16,14 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  private readonly router: Router = inject(Router);
+  private readonly authFacade: AuthFacade = inject(AuthFacade);
   isToast = false;
   error: { hasError: boolean; message: string } = {
     hasError: false,
     message: '',
   };
-  loginForm: FormGroup;
 
+  loginForm: FormGroup;
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -30,13 +31,16 @@ export class LoginComponent {
     });
   }
 
+  readonly _vm = combineLatest({
+    isLoading : this.authFacade._isLoading,
+    hasError : this.authFacade._hasError
+  })
+
   onSubmit(): void {
     if (this.loginForm.valid) {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
-
-      console.log(password);
-      
+      this.authFacade.login(email , password);
     }
   }
 }

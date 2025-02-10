@@ -1,10 +1,21 @@
-<nav>
-    <ul class="flex">
-        <li class="mx-2">
-            <a [routerLink]="['/']" class=" text-base hover:text-primary duration-300 ease-linear" routerLinkActive="text-primary" >Home</a>
-        </li>
-        <li class="mx-2">
-            <a [routerLink]="['/resturants']" class="text-base hover:text-primary duration-300 ease-linear" routerLinkActive="text-primary" >Resturants</a>
-        </li>
-    </ul>
-</nav>
+@if(_vm | async; as vm) {
+    <nav>
+        <ul class="flex">
+            <li class="mx-2">
+                <a [routerLink]="['/']" class=" text-base hover:text-primary duration-300 ease-linear" routerLinkActive="text-primary" >Home</a>
+            </li>
+            <li class="mx-2">
+                <a [routerLink]="['/resturants']" class="text-base hover:text-primary duration-300 ease-linear" routerLinkActive="text-primary" >Resturants</a>
+            </li>
+            @if (!vm.isAuthenticated) {
+                <li class="mx-2">
+                    <a [routerLink]="['/auth/login']" class="text-base hover:text-primary duration-300 ease-linear" routerLinkActive="text-primary" >Login</a>
+                </li>
+            }@else {
+                <li class="mx-2">
+                    <button (click)="logout()" class="text-base hover:text-primary duration-300 ease-linear" routerLinkActive="text-primary" >Logout</button>
+                </li>
+            }
+        </ul>
+    </nav>
+}
