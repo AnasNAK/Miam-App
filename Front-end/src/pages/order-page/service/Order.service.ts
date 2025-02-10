@@ -3,7 +3,7 @@ import { CreateOrder, Order } from "../Models/order.module";
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 
-@Injectable()
+@Injectable({providedIn:'root'})
 export class OrderService {
     private apiUrl  = 'http://localhost:8080/order';
     constructor(private http:HttpClient){}

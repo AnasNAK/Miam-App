@@ -1,5 +1,17 @@
-import { CanActivateFn } from '@angular/router';
+import { inject, Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, CanActivate, createUrlTreeFromSnapshot, GuardResult, MaybeAsync, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { map, Observable, take } from "rxjs";
+import { AuthFacade } from "../store/auth.facades";
 
-export const authGuard: CanActivateFn = (route, state) => {
-  return true;
-};
+
+@Injectable({providedIn : 'root'})
+export class AuthGuard implements CanActivate {
+  private readonly authFacade : AuthFacade = inject(AuthFacade)
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {
+    return this.authFacade._isAuthenticated.pipe(
+      take(1),
+      map(isAuth => isAuth ? true : createUrlTreeFromSnapshot(route , ['auth/login'] , {returnUrl : state.url}))
+    )
+  }
+}
