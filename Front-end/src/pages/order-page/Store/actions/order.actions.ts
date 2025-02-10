@@ -17,13 +17,13 @@ export const UpdatePaymentMethod = createAction(
 );
 
 export const PersisteOrder = createAction('[Order / Create Order]',
-    props<{data:CreateOrder}>
+    props<{data:CreateOrder}>()
 )
 
 export const PersisteOrderSuccess = createAction('[Order / Create Order Success]' , 
-    props<{response : Order}>
+    props<{response : Order}>()
 )
 
 export const PersisteOrderFailure = createAction('[Order / Create Order Failure]' , 
-    props<{error : any}>
+    props<{error : any}>()
 )

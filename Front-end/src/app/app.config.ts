@@ -7,8 +7,9 @@ import { reducers } from './core/reducers';
 import { provideEffects } from '@ngrx/effects';
 import { HomeEffect } from '../pages/home/state/home.effects';
 import { provideHttpClient } from '@angular/common/http';
+import { OrderEffects } from '../pages/order-page/Store';
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideStore(reducers), provideEffects([HomeEffect]) , provideHttpClient()]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideStore(reducers), provideEffects([HomeEffect , OrderEffects]) , provideHttpClient()]
 };
