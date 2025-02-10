@@ -11,7 +11,7 @@
     }
 
     <p *ngIf="PaymenMethod" class="flex justify-between">
-        Payment method : <span class="font-bold text-secondary">{{PaymenMethod ?? "Still no payment"}}</span>
+        Payment method : <span class="font-bold text-secondary">{{PaymenMethod}}</span>
     </p>
     
     <p *ngIf="FullPrice$ | async as fullPrice;" class="w-full flex justify-between">
