@@ -39,7 +39,6 @@ public class AuthService {
                 )
         );
 
-
         return repository.findByEmail(loginDTO.getEmail())
                 .orElseThrow();
 
