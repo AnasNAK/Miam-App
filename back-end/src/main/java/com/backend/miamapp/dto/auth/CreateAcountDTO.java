@@ -13,4 +13,6 @@ public class CreateAcountDTO {
     private String email;
     @NotBlank(message = "Le Mot de pass SVP")
     private String password;
+    @NotBlank(message = "le role SVP !")
+    private String role;
 }

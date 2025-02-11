@@ -1,34 +1,37 @@
 package com.backend.miamapp.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AppUser implements UserDetails {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String username;
-    private String email;
-    private String password;
+@DiscriminatorColumn(name="ROLE ", discriminatorType = DiscriminatorType.STRING)
+public abstract class AppUser implements UserDetails {
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        protected Long id;
+    protected String username;
+    protected String email;
+    protected String password;
+
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+
+        String role = this.getClass().getAnnotation(DiscriminatorValue.class).value();
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role));
     }
     @Override
     public String getUsername() {
