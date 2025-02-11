@@ -23,16 +23,11 @@ public class AuthController {
     JwtService jwtService;
 
     @PostMapping("/AddAcount")
-    public ResponseEntity<AppUser> createAcount(@Valid @RequestBody CreateAcountDTO createAcountDTO){
+    public ResponseEntity<AppUser> createAccount(@Valid @RequestBody CreateAcountDTO createAcountDTO){
         return ResponseEntity.ok(service.createAcount(createAcountDTO));
-
     }
-
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> authenticate(@RequestBody LoginDTO loginUserDto) {
-        AppUser authenticatedUser = service.authenticate(loginUserDto);
-        String jwtToken = jwtService.generateToken(authenticatedUser);
-        LoginResponseDTO loginResponseDTO = new LoginResponseDTO(jwtToken,jwtService.getExpirationTime());
-        return ResponseEntity.ok(loginResponseDTO);
+        return ResponseEntity.ok(service.authenticate(loginUserDto));
     }
 }

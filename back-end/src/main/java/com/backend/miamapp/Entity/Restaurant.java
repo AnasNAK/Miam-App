@@ -24,4 +24,9 @@ public class Restaurant {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL , mappedBy = "restaurant")
     private List<Meal> mealList;
+
+    @ManyToOne
+    private Admin admin;
+
 }
+
